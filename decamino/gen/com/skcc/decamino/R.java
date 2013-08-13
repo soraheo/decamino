@@ -10,6 +10,9 @@ package com.skcc.decamino;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int callout_textcolor=0x7f070000;
+    }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
@@ -21,21 +24,56 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int bg_speech=0x7f020000;
+        public static final int btn_green_highlight=0x7f020001;
+        public static final int btn_green_normal=0x7f020002;
+        public static final int btn_green_pressed=0x7f020003;
+        public static final int ic_angle=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int ic_map_arrive=0x7f020006;
+        public static final int ic_map_arrive_over=0x7f020007;
+        public static final int ic_map_no_01=0x7f020008;
+        public static final int ic_map_no_02=0x7f020009;
+        public static final int ic_map_start=0x7f02000a;
+        public static final int ic_map_start_over=0x7f02000b;
+        public static final int ic_pin_01=0x7f02000c;
+        public static final int ic_pin_02=0x7f02000d;
+        public static final int icon=0x7f02000e;
+        public static final int pin_ballon_arrow=0x7f02000f;
+        public static final int pin_ballon_bg=0x7f020010;
+        public static final int pin_ballon_on_arrow=0x7f020011;
+        public static final int pubtrans_ic_mylocation_off=0x7f020012;
+        public static final int pubtrans_ic_mylocation_on=0x7f020013;
     }
     public static final class id {
-        public static final int action_settings=0x7f080000;
+        public static final int action_settings=0x7f090005;
+        public static final int callout_overlay=0x7f090001;
+        public static final int callout_rightArrow=0x7f090004;
+        public static final int callout_text=0x7f090003;
+        public static final int callout_upper=0x7f090002;
+        public static final int mapView=0x7f090000;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
+        public static final int callout_overlay_view=0x7f030001;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f080000;
+        public static final int menu1_main=0x7f080001;
+        public static final int menu2_main=0x7f080002;
+        public static final int menu3_main=0x7f080003;
+        public static final int sub1_main=0x7f080004;
+        public static final int sub2_main=0x7f080005;
+        public static final int sub3_main=0x7f080006;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int hello_world=0x7f050002;
+        public static final int str_done=0x7f050003;
+        public static final int title_activity_menu1_main=0x7f050004;
+        public static final int title_activity_menu2_main=0x7f050005;
+        public static final int title_activity_menu3_main=0x7f050006;
     }
     public static final class style {
         /** 
