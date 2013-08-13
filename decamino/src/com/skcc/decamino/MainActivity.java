@@ -884,23 +884,23 @@ public class MainActivity extends NMapActivity {
 				}
 				return true;
 				
-//			case MENU_ITEM_DECAMINO_MENU1:
-//				Intent intent = new Intent(getBaseContext(), Menu1Main.class);
-//				intent.setFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
-//				startActivity(intent);
-//				return true;
-//			
-//			case MENU_ITEM_DECAMINO_MENU2:
-//				Intent intent2 = new Intent(getBaseContext(), Menu2Main.class);
-//				intent2.setFlags(intent2.FLAG_ACTIVITY_SINGLE_TOP);
-//				startActivity(intent2);
-//				return true;
-//			
-//			case MENU_ITEM_DECAMINO_MENU3:
-//				Intent intent3 = new Intent(getBaseContext(), Menu3Main.class);
-//				intent3.setFlags(intent3.FLAG_ACTIVITY_SINGLE_TOP);
-//				startActivity(intent3);
-//				return true;
+			case MENU_ITEM_DECAMINO_MENU1:
+				Intent intent = new Intent(getBaseContext(), Menu1Main.class);
+				intent.setFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);
+				startActivity(intent);
+				return true;
+			
+			case MENU_ITEM_DECAMINO_MENU2:
+				Intent intent2 = new Intent(getBaseContext(), Menu2Main.class);
+				intent2.setFlags(intent2.FLAG_ACTIVITY_SINGLE_TOP);
+				startActivity(intent2);
+				return true;
+			
+			case MENU_ITEM_DECAMINO_MENU3:
+				Intent intent3 = new Intent(getBaseContext(), Menu3Main.class);
+				intent3.setFlags(intent3.FLAG_ACTIVITY_SINGLE_TOP);
+				startActivity(intent3);
+				return true;
 				
 		}
 

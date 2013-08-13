@@ -44,6 +44,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.skcc.decamino.Menu1Main"
+            android:label="@string/title_activity_menu1_main" >
+        </activity>
+        <activity
+            android:name="com.skcc.decamino.Menu2Main"
+            android:label="@string/title_activity_menu2_main" >
+        </activity>
+        <activity
+            android:name="com.skcc.decamino.Menu3Main"
+            android:label="@string/title_activity_menu3_main" >
+        </activity>
     </application>
 
 </manifest>
