@@ -8,5 +8,6 @@
     <string name="title_activity_menu1_main">Menu1Main</string>
     <string name="title_activity_menu2_main">Menu2Main</string>
     <string name="title_activity_menu3_main">Menu3Main</string>
+    <string name="title_activity_search_location">SearchLocation</string>
 
 </resources>

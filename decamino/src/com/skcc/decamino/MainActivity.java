@@ -34,8 +34,11 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.SubMenu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
@@ -75,7 +78,12 @@ public class MainActivity extends NMapActivity {
 	private NMapPOIdataOverlay mFloatingPOIdataOverlay;
 	private NMapPOIitem mFloatingPOIitem;
 
-	private static boolean USE_XML_LAYOUT = false;
+	private static boolean USE_XML_LAYOUT = true;
+	
+	private Double longitude = 0.0;
+	private Double latitude = 0.0;
+	
+	private EditText keyword;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -97,6 +105,24 @@ public class MainActivity extends NMapActivity {
 			// set the activity content to the parent view
 			setContentView(mMapContainerView);
 		}
+		
+		Button button1 = (Button) findViewById(R.id.button1);
+		keyword = (EditText) findViewById(R.id.editText1);
+		button1.setOnClickListener(new OnClickListener() {			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(getBaseContext(), SearchLocation.class);
+				
+				Bundle data = new Bundle();
+				data.putString("keyword", keyword.getText().toString());
+				
+				intent.setFlags(intent.FLAG_ACTIVITY_SINGLE_TOP);				
+				intent.putExtras(data);
+				startActivity(intent);
+			}
+		});  
+		
 
 		// set a registered API key for Open MapViewer Library
 		mMapView.setApiKey(API_KEY);
@@ -679,11 +705,13 @@ public class MainActivity extends NMapActivity {
 
 	/* Menus */
 	private static final int MENU_ITEM_CLEAR_MAP = 10;
-	private static final int MENU_ITEM_MAP_MODE = 20;
-	private static final int MENU_ITEM_MAP_MODE_SUB_VECTOR = MENU_ITEM_MAP_MODE + 1;
-	private static final int MENU_ITEM_MAP_MODE_SUB_SATELLITE = MENU_ITEM_MAP_MODE + 2;
-	private static final int MENU_ITEM_MAP_MODE_SUB_TRAFFIC = MENU_ITEM_MAP_MODE + 3;
-	private static final int MENU_ITEM_MAP_MODE_SUB_BICYCLE = MENU_ITEM_MAP_MODE + 4;
+	
+//	private static final int MENU_ITEM_MAP_MODE = 20;
+//	private static final int MENU_ITEM_MAP_MODE_SUB_VECTOR = MENU_ITEM_MAP_MODE + 1;
+//	private static final int MENU_ITEM_MAP_MODE_SUB_SATELLITE = MENU_ITEM_MAP_MODE + 2;
+//	private static final int MENU_ITEM_MAP_MODE_SUB_TRAFFIC = MENU_ITEM_MAP_MODE + 3;
+//	private static final int MENU_ITEM_MAP_MODE_SUB_BICYCLE = MENU_ITEM_MAP_MODE + 4;
+	
 	private static final int MENU_ITEM_ZOOM_CONTROLS = 30;
 	private static final int MENU_ITEM_MY_LOCATION = 40;
 
@@ -715,51 +743,51 @@ public class MainActivity extends NMapActivity {
 		menuItem.setAlphabeticShortcut('c');
 		menuItem.setIcon(android.R.drawable.ic_menu_revert);
 
-		subMenu = menu.addSubMenu(Menu.NONE, MENU_ITEM_MAP_MODE, Menu.CATEGORY_SECONDARY, "지도보기");
-		subMenu.setIcon(android.R.drawable.ic_menu_mapmode);
+//		subMenu = menu.addSubMenu(Menu.NONE, MENU_ITEM_MAP_MODE, Menu.CATEGORY_SECONDARY, "지도보기");
+//		subMenu.setIcon(android.R.drawable.ic_menu_mapmode);
 
-		menuItem = subMenu.add(0, MENU_ITEM_MAP_MODE_SUB_VECTOR, Menu.NONE, "일반지도");
-		menuItem.setAlphabeticShortcut('m');
-		menuItem.setCheckable(true);
-		menuItem.setChecked(false);
+//		menuItem = subMenu.add(0, MENU_ITEM_MAP_MODE_SUB_VECTOR, Menu.NONE, "일반지도");
+//		menuItem.setAlphabeticShortcut('m');
+//		menuItem.setCheckable(true);
+//		menuItem.setChecked(false);
+//
+//		menuItem = subMenu.add(0, MENU_ITEM_MAP_MODE_SUB_SATELLITE, Menu.NONE, "위성지도");
+//		menuItem.setAlphabeticShortcut('s');
+//		menuItem.setCheckable(true);
+//		menuItem.setChecked(false);
+//
+//		menuItem = subMenu.add(0, MENU_ITEM_MAP_MODE_SUB_TRAFFIC, Menu.NONE, "실시간교통");
+//		menuItem.setAlphabeticShortcut('t');
+//		menuItem.setCheckable(true);
+//		menuItem.setChecked(false);
+//
+//		menuItem = subMenu.add(0, MENU_ITEM_MAP_MODE_SUB_BICYCLE, Menu.NONE, "자전거지도");
+//		menuItem.setAlphabeticShortcut('b');
+//		menuItem.setCheckable(true);
+//		menuItem.setChecked(false);
 
-		menuItem = subMenu.add(0, MENU_ITEM_MAP_MODE_SUB_SATELLITE, Menu.NONE, "위성지도");
-		menuItem.setAlphabeticShortcut('s');
-		menuItem.setCheckable(true);
-		menuItem.setChecked(false);
-
-		menuItem = subMenu.add(0, MENU_ITEM_MAP_MODE_SUB_TRAFFIC, Menu.NONE, "실시간교통");
-		menuItem.setAlphabeticShortcut('t');
-		menuItem.setCheckable(true);
-		menuItem.setChecked(false);
-
-		menuItem = subMenu.add(0, MENU_ITEM_MAP_MODE_SUB_BICYCLE, Menu.NONE, "자전거지도");
-		menuItem.setAlphabeticShortcut('b');
-		menuItem.setCheckable(true);
-		menuItem.setChecked(false);
-
-		menuItem = menu.add(0, MENU_ITEM_ZOOM_CONTROLS, Menu.CATEGORY_SECONDARY, "Zoom Controls");
-		menuItem.setAlphabeticShortcut('z');
-		menuItem.setIcon(android.R.drawable.ic_menu_zoom);
+//		menuItem = menu.add(0, MENU_ITEM_ZOOM_CONTROLS, Menu.CATEGORY_SECONDARY, "Zoom Controls");
+//		menuItem.setAlphabeticShortcut('z');
+//		menuItem.setIcon(android.R.drawable.ic_menu_zoom);
 
 		menuItem = menu.add(0, MENU_ITEM_MY_LOCATION, Menu.CATEGORY_SECONDARY, "내위치");
 		menuItem.setAlphabeticShortcut('l');
 		menuItem.setIcon(android.R.drawable.ic_menu_mylocation);
 
-		subMenu = menu.addSubMenu(Menu.NONE, MENU_ITEM_TEST_MODE, Menu.CATEGORY_SECONDARY, "테스트");
-		subMenu.setIcon(android.R.drawable.ic_menu_more);
-
-		menuItem = subMenu.add(0, MENU_ITEM_TEST_POI_DATA, Menu.NONE, "마커 표시");
-		menuItem.setAlphabeticShortcut('p');
-
-		menuItem = subMenu.add(0, MENU_ITEM_TEST_PATH_DATA, Menu.NONE, "경로선 표시");
-		menuItem.setAlphabeticShortcut('t');
-
-		menuItem = subMenu.add(0, MENU_ITEM_TEST_FLOATING_DATA, Menu.NONE, "직접 지정");
-		menuItem.setAlphabeticShortcut('f');
-
-		menuItem = subMenu.add(0, MENU_ITEM_TEST_AUTO_ROTATE, Menu.NONE, "지도 회전");
-		menuItem.setAlphabeticShortcut('a');
+//		subMenu = menu.addSubMenu(Menu.NONE, MENU_ITEM_TEST_MODE, Menu.CATEGORY_SECONDARY, "테스트");
+//		subMenu.setIcon(android.R.drawable.ic_menu_more);
+//
+//		menuItem = subMenu.add(0, MENU_ITEM_TEST_POI_DATA, Menu.NONE, "마커 표시");
+//		menuItem.setAlphabeticShortcut('p');
+//
+//		menuItem = subMenu.add(0, MENU_ITEM_TEST_PATH_DATA, Menu.NONE, "경로선 표시");
+//		menuItem.setAlphabeticShortcut('t');
+//
+//		menuItem = subMenu.add(0, MENU_ITEM_TEST_FLOATING_DATA, Menu.NONE, "직접 지정");
+//		menuItem.setAlphabeticShortcut('f');
+//
+//		menuItem = subMenu.add(0, MENU_ITEM_TEST_AUTO_ROTATE, Menu.NONE, "지도 회전");
+//		menuItem.setAlphabeticShortcut('a');
 		
 		subMenu = menu.addSubMenu(Menu.NONE, MENU_ITEM_DECAMINO, Menu.CATEGORY_SECONDARY, "Decamino");
 		subMenu.setIcon(android.R.drawable.ic_menu_more);
@@ -777,16 +805,16 @@ public class MainActivity extends NMapActivity {
 	public boolean onPrepareOptionsMenu(Menu pMenu) {
 		super.onPrepareOptionsMenu(pMenu);
 
-		int viewMode = mMapController.getMapViewMode();
-		boolean isTraffic = mMapController.getMapViewTrafficMode();
-		boolean isBicycle = mMapController.getMapViewBicycleMode();
+//		int viewMode = mMapController.getMapViewMode();
+//		boolean isTraffic = mMapController.getMapViewTrafficMode();
+//		boolean isBicycle = mMapController.getMapViewBicycleMode();
 
-		pMenu.findItem(MENU_ITEM_CLEAR_MAP).setEnabled(
-			(viewMode != NMapView.VIEW_MODE_VECTOR) || isTraffic || mOverlayManager.sizeofOverlays() > 0);
-		pMenu.findItem(MENU_ITEM_MAP_MODE_SUB_VECTOR).setChecked(viewMode == NMapView.VIEW_MODE_VECTOR);
-		pMenu.findItem(MENU_ITEM_MAP_MODE_SUB_SATELLITE).setChecked(viewMode == NMapView.VIEW_MODE_HYBRID);
-		pMenu.findItem(MENU_ITEM_MAP_MODE_SUB_TRAFFIC).setChecked(isTraffic);
-		pMenu.findItem(MENU_ITEM_MAP_MODE_SUB_BICYCLE).setChecked(isBicycle);
+//		pMenu.findItem(MENU_ITEM_CLEAR_MAP).setEnabled(
+//			(viewMode != NMapView.VIEW_MODE_VECTOR) || isTraffic || mOverlayManager.sizeofOverlays() > 0);
+//		pMenu.findItem(MENU_ITEM_MAP_MODE_SUB_VECTOR).setChecked(viewMode == NMapView.VIEW_MODE_VECTOR);
+//		pMenu.findItem(MENU_ITEM_MAP_MODE_SUB_SATELLITE).setChecked(viewMode == NMapView.VIEW_MODE_HYBRID);
+//		pMenu.findItem(MENU_ITEM_MAP_MODE_SUB_TRAFFIC).setChecked(isTraffic);
+//		pMenu.findItem(MENU_ITEM_MAP_MODE_SUB_BICYCLE).setChecked(isBicycle);
 
 		if (mMyLocationOverlay == null) {
 			pMenu.findItem(MENU_ITEM_MY_LOCATION).setEnabled(false);
@@ -820,21 +848,21 @@ public class MainActivity extends NMapActivity {
 
 				return true;
 
-			case MENU_ITEM_MAP_MODE_SUB_VECTOR:
-				mMapController.setMapViewMode(NMapView.VIEW_MODE_VECTOR);
-				return true;
-
-			case MENU_ITEM_MAP_MODE_SUB_SATELLITE:
-				mMapController.setMapViewMode(NMapView.VIEW_MODE_HYBRID);
-				return true;
-
-			case MENU_ITEM_MAP_MODE_SUB_TRAFFIC:
-				mMapController.setMapViewTrafficMode(!mMapController.getMapViewTrafficMode());
-				return true;
-
-			case MENU_ITEM_MAP_MODE_SUB_BICYCLE:
-				mMapController.setMapViewBicycleMode(!mMapController.getMapViewBicycleMode());
-				return true;
+//			case MENU_ITEM_MAP_MODE_SUB_VECTOR:
+//				mMapController.setMapViewMode(NMapView.VIEW_MODE_VECTOR);
+//				return true;
+//
+//			case MENU_ITEM_MAP_MODE_SUB_SATELLITE:
+//				mMapController.setMapViewMode(NMapView.VIEW_MODE_HYBRID);
+//				return true;
+//
+//			case MENU_ITEM_MAP_MODE_SUB_TRAFFIC:
+//				mMapController.setMapViewTrafficMode(!mMapController.getMapViewTrafficMode());
+//				return true;
+//
+//			case MENU_ITEM_MAP_MODE_SUB_BICYCLE:
+//				mMapController.setMapViewBicycleMode(!mMapController.getMapViewBicycleMode());
+//				return true;
 
 			case MENU_ITEM_ZOOM_CONTROLS:
 				mMapView.displayZoomControls(true);
@@ -844,45 +872,45 @@ public class MainActivity extends NMapActivity {
 				startMyLocation();
 				return true;
 
-			case MENU_ITEM_TEST_POI_DATA:
-				mOverlayManager.clearOverlays();
+//			case MENU_ITEM_TEST_POI_DATA:
+//				mOverlayManager.clearOverlays();
+//
+//				// add POI data overlay
+//				testPOIdataOverlay();
+//				return true;
 
-				// add POI data overlay
-				testPOIdataOverlay();
-				return true;
+//			case MENU_ITEM_TEST_PATH_DATA:
+//				mOverlayManager.clearOverlays();
+//
+//				// add path data overlay
+//				testPathDataOverlay();
+//
+//				// add path POI data overlay
+//				testPathPOIdataOverlay();
+//				return true;
 
-			case MENU_ITEM_TEST_PATH_DATA:
-				mOverlayManager.clearOverlays();
+//			case MENU_ITEM_TEST_FLOATING_DATA:
+//				mOverlayManager.clearOverlays();
+//				testFloatingPOIdataOverlay();
+//				return true;
 
-				// add path data overlay
-				testPathDataOverlay();
-
-				// add path POI data overlay
-				testPathPOIdataOverlay();
-				return true;
-
-			case MENU_ITEM_TEST_FLOATING_DATA:
-				mOverlayManager.clearOverlays();
-				testFloatingPOIdataOverlay();
-				return true;
-
-			case MENU_ITEM_TEST_AUTO_ROTATE:
-				if (mMapView.isAutoRotateEnabled()) {
-					mMapView.setAutoRotateEnabled(false, false);
-
-					mMapContainerView.requestLayout();
-
-					mHnadler.removeCallbacks(mTestAutoRotation);
-				} else {
-
-					mMapView.setAutoRotateEnabled(true, false);
-
-					mMapView.setRotateAngle(30);
-					mHnadler.postDelayed(mTestAutoRotation, AUTO_ROTATE_INTERVAL);
-
-					mMapContainerView.requestLayout();
-				}
-				return true;
+//			case MENU_ITEM_TEST_AUTO_ROTATE:
+//				if (mMapView.isAutoRotateEnabled()) {
+//					mMapView.setAutoRotateEnabled(false, false);
+//
+//					mMapContainerView.requestLayout();
+//
+//					mHnadler.removeCallbacks(mTestAutoRotation);
+//				} else {
+//
+//					mMapView.setAutoRotateEnabled(true, false);
+//
+//					mMapView.setRotateAngle(30);
+//					mHnadler.postDelayed(mTestAutoRotation, AUTO_ROTATE_INTERVAL);
+//
+//					mMapContainerView.requestLayout();
+//				}
+//				return true;
 				
 			case MENU_ITEM_DECAMINO_MENU1:
 				Intent intent = new Intent(getBaseContext(), Menu1Main.class);

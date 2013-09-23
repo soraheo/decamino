@@ -46,19 +46,27 @@ public final class R {
         public static final int pubtrans_ic_mylocation_on=0x7f020013;
     }
     public static final class id {
-        public static final int action_settings=0x7f090005;
-        public static final int callout_overlay=0x7f090001;
-        public static final int callout_rightArrow=0x7f090004;
-        public static final int callout_text=0x7f090003;
-        public static final int callout_upper=0x7f090002;
+        public static final int action_settings=0x7f09000b;
+        public static final int address=0x7f09000a;
+        public static final int button1=0x7f090002;
+        public static final int callout_overlay=0x7f090004;
+        public static final int callout_rightArrow=0x7f090007;
+        public static final int callout_text=0x7f090006;
+        public static final int callout_upper=0x7f090005;
+        public static final int description=0x7f090009;
+        public static final int editText1=0x7f090001;
+        public static final int listview=0x7f090003;
         public static final int mapView=0x7f090000;
+        public static final int title=0x7f090008;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_menu1_main=0x7f030001;
         public static final int activity_menu2_main=0x7f030002;
         public static final int activity_menu3_main=0x7f030003;
-        public static final int callout_overlay_view=0x7f030004;
+        public static final int activity_search_location=0x7f030004;
+        public static final int callout_overlay_view=0x7f030005;
+        public static final int listitem=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -77,6 +85,7 @@ public final class R {
         public static final int title_activity_menu1_main=0x7f050004;
         public static final int title_activity_menu2_main=0x7f050005;
         public static final int title_activity_menu3_main=0x7f050006;
+        public static final int title_activity_search_location=0x7f050007;
     }
     public static final class style {
         /** 
