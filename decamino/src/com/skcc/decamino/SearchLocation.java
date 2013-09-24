@@ -118,23 +118,17 @@ public class SearchLocation extends Activity {
 						
 			HashMap<String, String> hsItem = new HashMap<String, String>();;
 			
-			Log.i("mapx", items.get(position).mapx);
-			Log.i("mapy", items.get(position).mapy);
-			
 			hsItem.put("mapx", items.get(position).mapx);
 			hsItem.put("mapy", items.get(position).mapy);
 			
 			GeoCode point = new GeoCode();
 			DaumConvertAddress dca = new DaumConvertAddress(hsItem);
 			point = dca.convert();
-			
-			Log.i("longitude", point.longitude);
-			Log.i("latitude", point.latitude);
-			
-			Intent intent = new Intent(getBaseContext(), MainActivity.class);	
-			intent.putExtra("latitude", point.latitude);
-			intent.putExtra("longitude", point.longitude);
-			startActivity(intent);
+						
+//			Intent intent = new Intent(getBaseContext(), MainActivity.class);	
+//			intent.putExtra("latitude", point.latitude);
+//			intent.putExtra("longitude", point.longitude);
+//			startActivity(intent);
 		}
 	};	
 }
