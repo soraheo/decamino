@@ -2,7 +2,6 @@ package com.skcc.decamino;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,9 +15,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import android.app.Activity;
-import android.view.Menu;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class SearchLocation extends Activity {
@@ -125,10 +121,10 @@ public class SearchLocation extends Activity {
 			DaumConvertAddress dca = new DaumConvertAddress(hsItem);
 			point = dca.convert();
 						
-//			Intent intent = new Intent(getBaseContext(), MainActivity.class);	
-//			intent.putExtra("latitude", point.latitude);
-//			intent.putExtra("longitude", point.longitude);
-//			startActivity(intent);
+			Intent intent = new Intent(getBaseContext(), MainActivity.class);	
+			intent.putExtra("longitude", point.longitude);
+			intent.putExtra("latitude", point.latitude);
+			startActivity(intent);
 		}
 	};	
 }

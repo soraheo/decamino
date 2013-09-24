@@ -79,11 +79,10 @@ public class MainActivity extends NMapActivity {
 	private NMapPOIitem mFloatingPOIitem;
 
 	private static boolean USE_XML_LAYOUT = true;
-	
-	private Double longitude = 0.0;
-	private Double latitude = 0.0;
-	
 	private EditText keyword;
+	
+	private double longitude;
+	private double latitude;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -104,17 +103,10 @@ public class MainActivity extends NMapActivity {
 			// set the activity content to the parent view
 			setContentView(mMapContainerView);
 		}
-		
-		// SearchLocation 클래스로부터 전달된 위도, 경도 받기
-		Intent intent = getIntent();
-		if(intent.getExtras() != null){
-			longitude = intent.getExtras().getDouble("longitude");
-			latitude = intent.getExtras().getDouble("latitude");
-		}
 				
-		Button button1 = (Button) findViewById(R.id.button1);
-		keyword = (EditText) findViewById(R.id.editText1);
-		button1.setOnClickListener(new OnClickListener() {			
+		Button search = (Button) findViewById(R.id.search);
+		keyword = (EditText) findViewById(R.id.keyword);
+		search.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -172,7 +164,39 @@ public class MainActivity extends NMapActivity {
 		mMapCompassManager = new NMapCompassManager(this);
 
 		// create my location overlay
-		mMyLocationOverlay = mOverlayManager.createMyLocationOverlay(mMapLocationManager, mMapCompassManager);		
+		mMyLocationOverlay = mOverlayManager.createMyLocationOverlay(mMapLocationManager, mMapCompassManager);
+		
+		// LocationMain 클래스로부터 전달된 위도, 경도 받기
+		Intent intent = getIntent();
+		if(intent.getExtras() != null){			
+			longitude = Double.parseDouble(intent.getExtras().getString("longitude"));
+			latitude = Double.parseDouble(intent.getExtras().getString("latitude"));	
+			Log.i("longitude", intent.getExtras().getString("longitude"));
+			Log.i("latitude", intent.getExtras().getString("latitude"));
+			restoreInstanceState();
+			markPoint(longitude, latitude);
+		}else{
+			startMyLocation();
+		}
+	}
+
+	private void markPoint(double longitude, double latitude) {
+		// TODO Auto-generated method stub
+		int markerId = NMapPOIflagType.PIN;
+		NMapPOIdata poiData = new NMapPOIdata(1, mMapViewerResourceProvider);
+		poiData.beginPOIdata(1);		
+		NMapPOIitem item = poiData.addPOIitem(longitude, latitude, "test", markerId, 0);
+		item.setRightAccessory(true, NMapPOIflagType.SPOT);
+		poiData.endPOIdata();
+		
+		// create POI data overlay
+		NMapPOIdataOverlay poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
+		
+		// set event listener to the overlay
+		poiDataOverlay.setOnStateChangeListener(onPOIdataStateChangeListener);
+
+		// select an item
+		poiDataOverlay.selectPOIitem(0, true);
 	}
 
 	@Override
@@ -229,8 +253,7 @@ public class MainActivity extends NMapActivity {
 			} else {
 				boolean isMyLocationEnabled = mMapLocationManager.enableMyLocation(true);
 				if (!isMyLocationEnabled) {
-					Toast.makeText(MainActivity.this, "Please enable a My Location source in system settings",
-						Toast.LENGTH_LONG).show();
+					Toast.makeText(MainActivity.this, "Please enable a My Location source in system settings", Toast.LENGTH_LONG).show();
 
 					Intent goToSettings = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
 					startActivity(goToSettings);
@@ -396,8 +419,7 @@ public class MainActivity extends NMapActivity {
 		public void onReverseGeocoderResponse(NMapPlacemark placeMark, NMapError errInfo) {
 
 			if (DEBUG) {
-				Log.i(LOG_TAG, "onReverseGeocoderResponse: placeMark="
-					+ ((placeMark != null) ? placeMark.toString() : null));
+				Log.i(LOG_TAG, "onReverseGeocoderResponse: placeMark=" + ((placeMark != null) ? placeMark.toString() : null));
 			}
 
 			if (errInfo != null) {
@@ -657,7 +679,7 @@ public class MainActivity extends NMapActivity {
 			if (overlayItem != null) {
 				// [TEST] 말풍선 오버레이를 뷰로 설정함
 				String title = overlayItem.getTitle();
-				if (title != null && title.length() > 5) {
+				if (title != null) {
 					return new NMapCalloutCustomOverlayView(MainActivity.this, itemOverlay, overlayItem, itemBounds);
 				}
 			}
@@ -679,9 +701,13 @@ public class MainActivity extends NMapActivity {
 		int viewMode = mPreferences.getInt(KEY_VIEW_MODE, NMAP_VIEW_MODE_DEFAULT);
 
 		mMapController.setMapViewMode(viewMode);
-		//mMapController.setMapCenter(new NGeoPoint(longitudeE6, latitudeE6), level);
 		
-		startMyLocation();
+		if(longitude * latitude != 0.0){	
+			Log.i("longitude", Double.toString(longitude));
+			Log.i("latitude", Double.toString(latitude));
+			mMapController.setMapCenter(new NGeoPoint(longitude, latitude), level);
+		}		
+		//startMyLocation();
 	}
 
 	private void saveInstanceState() {
@@ -705,7 +731,6 @@ public class MainActivity extends NMapActivity {
 		edit.putBoolean(KEY_BICYCLE_MODE, bicycleMode);
 
 		edit.commit();
-
 	}
 
 	/* Menus */

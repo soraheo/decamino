@@ -46,18 +46,19 @@ public final class R {
         public static final int pubtrans_ic_mylocation_on=0x7f020013;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000b;
-        public static final int address=0x7f09000a;
-        public static final int button1=0x7f090002;
-        public static final int callout_overlay=0x7f090004;
-        public static final int callout_rightArrow=0x7f090007;
-        public static final int callout_text=0x7f090006;
-        public static final int callout_upper=0x7f090005;
-        public static final int description=0x7f090009;
-        public static final int editText1=0x7f090001;
-        public static final int listview=0x7f090003;
+        public static final int action_settings=0x7f09000c;
+        public static final int address=0x7f09000b;
+        public static final int callout_overlay=0x7f090005;
+        public static final int callout_rightArrow=0x7f090008;
+        public static final int callout_text=0x7f090007;
+        public static final int callout_upper=0x7f090006;
+        public static final int description=0x7f09000a;
+        public static final int editText1=0x7f090003;
+        public static final int keyword=0x7f090001;
+        public static final int listview=0x7f090004;
         public static final int mapView=0x7f090000;
-        public static final int title=0x7f090008;
+        public static final int search=0x7f090002;
+        public static final int title=0x7f090009;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
