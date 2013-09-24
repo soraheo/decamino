@@ -22,6 +22,9 @@ class DaumConvertAddress {
 	public DaumConvertAddress(HashMap<String, String> hsItem) {
 		// TODO Auto-generated constructor stub
 		this.hsItem = hsItem;	
+		
+		x = hsItem.get("mapx");
+		y = hsItem.get("mapy");
 	}
 
 	public GeoCode convert() {
@@ -29,9 +32,6 @@ class DaumConvertAddress {
 		
 		GeoCode item = new GeoCode();
 				
-		x = hsItem.get("mapx");
-		y = hsItem.get("mapy");
-		
 		String m_x = "";
 		String m_y = "";
 		
@@ -73,24 +73,14 @@ class DaumConvertAddress {
 					Log.i("NET","START...");
 					
 					String tag = parser.getName();
-											
+										
 					if(tag.compareTo("result") == 0)
 					{
-						String result = parser.nextText();
-						item.result = result;
-						Log.i("result", result);
-					}
-					if(tag.compareTo("x") == 0)
-					{
-						String x = parser.nextText();
-						item.longitude = x;
-						Log.i("x", x);
-					}
-					if(tag.compareTo("y") == 0)
-					{
-						String y = parser.nextText();
+						String x = parser.getAttributeValue(0);
+						String y = parser.getAttributeValue(1);
+						
+						item.longitude = x;											
 						item.latitude = y;
-						Log.i("y", y);
 					}
 					break;
 				}

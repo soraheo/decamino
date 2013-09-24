@@ -92,7 +92,6 @@ public class MainActivity extends NMapActivity {
 
 		if (USE_XML_LAYOUT) {
 			setContentView(R.layout.activity_main);
-
 			mMapView = (NMapView)findViewById(R.id.mapView);
 		} else {
 			// create map view
@@ -106,6 +105,13 @@ public class MainActivity extends NMapActivity {
 			setContentView(mMapContainerView);
 		}
 		
+		// SearchLocation 클래스로부터 전달된 위도, 경도 받기
+		Intent intent = getIntent();
+		if(intent.getExtras() != null){
+			longitude = intent.getExtras().getDouble("longitude");
+			latitude = intent.getExtras().getDouble("latitude");
+		}
+				
 		Button button1 = (Button) findViewById(R.id.button1);
 		keyword = (EditText) findViewById(R.id.editText1);
 		button1.setOnClickListener(new OnClickListener() {			
@@ -121,8 +127,7 @@ public class MainActivity extends NMapActivity {
 				intent.putExtras(data);
 				startActivity(intent);
 			}
-		});  
-		
+		}); 
 
 		// set a registered API key for Open MapViewer Library
 		mMapView.setApiKey(API_KEY);
@@ -167,7 +172,7 @@ public class MainActivity extends NMapActivity {
 		mMapCompassManager = new NMapCompassManager(this);
 
 		// create my location overlay
-		mMyLocationOverlay = mOverlayManager.createMyLocationOverlay(mMapLocationManager, mMapCompassManager);
+		mMyLocationOverlay = mOverlayManager.createMyLocationOverlay(mMapLocationManager, mMapCompassManager);		
 	}
 
 	@Override

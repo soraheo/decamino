@@ -131,8 +131,10 @@ public class SearchLocation extends Activity {
 			Log.i("longitude", point.longitude);
 			Log.i("latitude", point.latitude);
 			
-			//Intent intent = new Intent(getBaseContext(), MainActivity.class);			
-			//startActivity(intent);
+			Intent intent = new Intent(getBaseContext(), MainActivity.class);	
+			intent.putExtra("latitude", point.latitude);
+			intent.putExtra("longitude", point.longitude);
+			startActivity(intent);
 		}
 	};	
 }
