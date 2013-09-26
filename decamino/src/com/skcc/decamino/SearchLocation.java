@@ -112,19 +112,19 @@ public class SearchLocation extends Activity {
     AdapterView.OnItemClickListener mItemClickListener = new OnItemClickListener() {
 		public void onItemClick(AdapterView parent, View view, int position, long id){
 						
-//			HashMap<String, String> hsItem = new HashMap<String, String>();;
-//			
-//			hsItem.put("mapx", items.get(position).mapx);
-//			hsItem.put("mapy", items.get(position).mapy);
-//			
-//			GeoCode point = new GeoCode();
-//			DaumConvertAddress dca = new DaumConvertAddress(hsItem);
-//			point = dca.convert();
-//						
-//			Intent intent = new Intent(getBaseContext(), MainActivity.class);	
-//			intent.putExtra("longitude", point.longitude);
-//			intent.putExtra("latitude", point.latitude);
-//			startActivity(intent);
+			HashMap<String, String> hsItem = new HashMap<String, String>();;
+			
+			hsItem.put("mapx", items.get(position).mapx);
+			hsItem.put("mapy", items.get(position).mapy);
+			
+			GeoCode point = new GeoCode();
+			DaumConvertAddress dca = new DaumConvertAddress(hsItem);
+			point = dca.convert();
+						
+			Intent intent = new Intent(getBaseContext(), MainActivity.class);	
+			intent.putExtra("longitude", point.longitude);
+			intent.putExtra("latitude", point.latitude);
+			startActivity(intent);
 		}
 	};	
 }

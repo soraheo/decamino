@@ -57,27 +57,20 @@ class DaumConvertAddress {
 			
 			//개발자 센터 참조
 			XmlPullParserFactory parserCreator = XmlPullParserFactory.newInstance();
-			
-			Log.i("DaumConvertAddress", "XmlPullParserFactory");
-			
 			XmlPullParser parser = parserCreator.newPullParser();
 			
-			Log.i("DaumConvertAddress", "XmlPullParser");
-						
 			parser.setInput(text.openStream(), null);
 			
-			Log.i("DaumConvertAddress", "Parsing...");
+			Log.i("NET", "Parsing...");
 			
 			// 읽어온 정보를 파싱하여 데이터를 만든다.
-			int parseEvent = parser.getEventType();			
-			Log.i("DaumConvertAddress", "parseEvent");
-			
+			int parseEvent = parser.getEventType();
 			while(parseEvent != XmlPullParser.END_DOCUMENT){
 				
 				switch(parseEvent){
 				
 				case XmlPullParser.START_TAG:					
-					//Log.i("NET","START...");
+					Log.i("NET","START...");
 					
 					String tag = parser.getName();
 										
@@ -88,19 +81,16 @@ class DaumConvertAddress {
 						
 						item.longitude = x;											
 						item.latitude = y;
-						
-						Log.i("longitude", x);
-						Log.i("latitude", y);
 					}
 					break;
 				}
 				parseEvent = parser.next();
 				// 다음 데이터로 넘어간다.. END_DOCUMENT일때까지..
 			}
-			Log.i("DaumConvertAddress ", "End...");
+			Log.i("NET", "End...");
 		} catch(Exception e)
 		{
-			Log.i("DaumConvertAddress", "Parsing fail");
+			Log.i("NET", "Parsing fail");
 		}
 		
 		return item;

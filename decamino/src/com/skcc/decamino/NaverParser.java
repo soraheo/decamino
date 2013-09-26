@@ -65,7 +65,7 @@ public class NaverParser {
 				switch(parseEvent){
 				
 				case XmlPullParser.START_TAG:					
-					Log.i("NET", "START...");
+					Log.i("NET","START...");
 					
 					String tag = parser.getName();
 					
