@@ -49,8 +49,8 @@
             android:label="@string/title_activity_menu1_main" >
         </activity>
         <activity
-            android:name="com.skcc.decamino.Menu2Main"
-            android:label="@string/title_activity_menu2_main" >
+            android:name="com.skcc.decamino.SQLiteActivity"
+            android:label="@string/sqlite_menu1" >
         </activity>
         <activity
             android:name="com.skcc.decamino.Menu3Main"

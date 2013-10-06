@@ -949,7 +949,7 @@ public class MainActivity extends NMapActivity {
 				return true;
 			
 			case MENU_ITEM_DECAMINO_MENU2:
-				Intent intent2 = new Intent(getBaseContext(), Menu2Main.class);
+				Intent intent2 = new Intent(getBaseContext(), SQLiteActivity.class);
 				intent2.setFlags(intent2.FLAG_ACTIVITY_SINGLE_TOP);
 				startActivity(intent2);
 				return true;
